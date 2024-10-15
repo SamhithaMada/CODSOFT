@@ -1,0 +1,55 @@
+contact_book = {}
+def add_contact():
+    name = input("Enter contact name:")
+    phone_number = int(input("Enter Phone Number:"))
+    email = input("Enter Email address:")
+    contact_book[name] = {"phone_number": phone_number,"email_address":email}
+    print("Contact details added successfully")
+def view_contact_list():
+    for name in contact_book:
+        print(f"\nContact: {name}")
+        print(f"Phone: {contact_book[name]['phone_number']}")
+        print(f"Email: {contact_book[name]['email_address']}")
+def search_contact():
+    name = input("Enter the contact name you want to search:")
+    if name in contact_book:
+        print(f"Contact found: {name}")
+        print(f"Phone: {contact_book[name]['phone_number']}")
+        print(f"Email: {contact_book[name]['email_address']}")
+    else:
+        print(f"Contact {name} not found")
+
+def update_contact():
+    name = input("Enter the contact name you want to  update:")
+    if name in contact_book:
+        phone = int(input(f"Enter new phone number for {name} (Current phone number: {contact_book[name]['phone_number']}"))
+        contact_book[name]['phone_number'] = phone
+        print("Contact details updated Successfully")
+    else:
+        print("Contact not found")
+def delete_contact():
+    name = input("Enter the contact name you want to delete:")
+    if name in contact_book:
+        del contact_book[name]
+        print("Contact deleted Successfully")
+        print("Here is your updated Contact book")
+        view_contact_list()
+while True:
+    print("\nContact book Menu:\n1.Add Contact\n2.View Contact List\n3.Search Contact\n4.Update Contact\n5.Delete Contact\n6.Exit")
+    option = int(input("Choose an option(1-6):"))
+    if option == 1:
+        add_contact()
+    elif option == 2:
+        view_contact_list()
+    elif option == 3:
+        search_contact()
+    elif option == 4:
+        update_contact()
+    elif option == 5:
+        delete_contact()
+    elif option == 6:
+        print("Thankyou!!")
+        break
+    else:
+        print("Invalid Choice...Please enter a valid choice")
+        continue
