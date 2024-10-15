@@ -1,0 +1,33 @@
+import random
+
+def rock_paper_scissors():
+    options = {
+        0: "rock",
+        1: "paper",
+        2: "scissors",
+        3: "exit"
+    }
+    while True:
+        print("\nROCK PAPER SCISSORS GAME START!!!")
+        user_choice = int(input("enter your choice(rock:0,paper:1,scissors:2,and exit:3)"))
+        if user_choice == 3:
+            print("Thanks for playing")
+            break
+        if user_choice < 0 or user_choice > 3:
+            print("Invalid choice.Play again")
+            continue
+        else:
+            print("You chose:",options[user_choice])
+            computers_choice = random.randint(0, 2)
+            print("computer chose:",options[computers_choice])
+            if user_choice == 0 and computers_choice == 2:
+                print("You win")
+            elif user_choice == 2 and computers_choice == 0:
+                print("You lose")
+            elif computers_choice > user_choice:
+                print("You lose")
+            elif computers_choice < user_choice:
+                print("You win")
+            elif computers_choice == user_choice:
+                print("It's a Draw")
+rock_paper_scissors()
